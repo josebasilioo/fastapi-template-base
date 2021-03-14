@@ -1,9 +1,6 @@
-# from fastapi import APIRouter
-# from src.controllers.movieController import movieFunctions
+from fastapi import APIRouter
+from src.controllers import movieController
 
-# movies = APIRouter()
+movies = APIRouter()
 
-# @movies.get(movieFunctions.index('/', response_model=List[Movie]))
-# @movies.post(movieFunctions.add_movie('/', status_code=201))
-# @movies.put(movieFunctions.update_movie('/{id}'))
-# @movies.delete(movieFunctions.delete_movie('/{id}'))
+movies.include_router(movieController.movies, prefix='/movies', tags=["movies"])
